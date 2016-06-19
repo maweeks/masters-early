@@ -23,4 +23,4 @@ http://
 
 ## Libraries Used
 
-* 
+* [Twitter API (GET statuses/sample)] (https://dev.twitter.com/streaming/reference/get/statuses/sample)
