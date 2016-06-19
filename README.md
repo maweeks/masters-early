@@ -20,3 +20,7 @@ This repository contains submission material for the CO880 Early Deliverable.
 This application is currently running at the following URL:
 
 http://
+
+## Libraries Used
+
+* 
