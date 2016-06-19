@@ -2,7 +2,7 @@
 
 This repository contains submission material for the CO880 Early Deliverable.
 
-Copyright 2016 Matt Weeks matt@weeks.codes
+&copy; Matt Weeks 2016 (matt@weeks.codes)
 
 ## Directory Structure
 ```
