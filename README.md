@@ -1,8 +1,8 @@
 # Masters Dissertation Early Deliverable
 
-Copyright 2016 Matt Weeks matt@weeks.codes
-
 This repository contains submission material for the CO880 Early Deliverable.
+
+Copyright 2016 Matt Weeks matt@weeks.codes
 
 ## Directory Structure
 ```
