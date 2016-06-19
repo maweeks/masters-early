@@ -11,6 +11,7 @@ This repository contains submission material for the CO880 Early Deliverable.
 |   |-- risks.md
 |   |-- specification.md
 |-- src
+|-- .gitignore
 |-- README.md
 ```
 
