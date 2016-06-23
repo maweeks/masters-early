@@ -17,11 +17,11 @@
 from secrets import *
 
 import sys
-sys.path.insert(0, 'libs')
 
-import tweepy
-
-import webapp2
+sys.path.append('libs')
+import ssl
+# import tweepy, webapp2
+# import webapp2
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -29,17 +29,19 @@ class MainHandler(webapp2.RequestHandler):
 
 class StreamHandler(webapp2.RequestHandler):
     def get(self):
-        auth = tweepy.OAuthHandler(getConsumerKey(), getConsumerSecret())
-        auth.secure = True
-        auth.set_access_token(getAccessToken(), getAccessTokenSecret())
+        print("asdf")
+        # auth = tweepy.OAuthHandler(getConsumerKey(), getConsumerSecret())
+        # auth.secure = True
+        # auth.set_access_token(getAccessToken(), getAccessTokenSecret())
 
-        api = tweepy.API(auth)
+        # api = tweepy.API(auth)
 
         # If the authentication was successful, you should
         # see the name of the account print out
         print(api.me().name)
 
-        self.response.write(secretTest() + api.me().name())
+        self.response.write(secretTest())
+        # self.response.write(secretTest() + api.me().name())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
