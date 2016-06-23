@@ -19,7 +19,7 @@ from secrets import *
 import sys
 
 sys.path.append('libs')
-import ssl
+# import ssl
 # import tweepy, webapp2
 # import webapp2
 
