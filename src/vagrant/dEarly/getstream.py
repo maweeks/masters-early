@@ -5,12 +5,21 @@ import tweepy, webapp2
 from tweepy.streaming import StreamListener
 from tweepy import Stream
 
+def processData(dataJSON):
+    # print(data)
+    print(str(dataJSON['user']['name'].encode("utf-8")))
+    print(dataJSON['created_at'])
+    # print(data)
+    for tag in dataJSON['entities']['hashtags']:
+        print '#' + tag['text'].encode("utf-8")
+    print(dataJSON['text'].encode("utf-8") + "\n")
+
 class StdOutListener(StreamListener):
     """ A listener handles tweets that are received from the stream.
     This is a basic listener that just prints received tweets to stdout.
     """
     def on_data(self, data):
-        print(data)
+        processData(json.loads(data))
         return True
 
     def on_error(self, status):
