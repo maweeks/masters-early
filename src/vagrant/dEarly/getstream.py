@@ -33,9 +33,10 @@ def processData(dataJSON):
     global initialData
     global timeCounter
     if initialData:
-        initialData = False
-        currentTime = dataJSON['created_at']
-        timeCounter += 1
+        if ('created_at' in dataJSON):
+            initialData = False
+            currentTime = dataJSON['created_at']
+            timeCounter += 1
     else:
         # print(data)
         # print(str(dataJSON['user']['name'].encode("utf-8")))
@@ -44,14 +45,15 @@ def processData(dataJSON):
         # for tag in dataJSON['entities']['hashtags']:
         #     print '#' + tag['text'].encode("utf-8")
         # print(dataJSON['text'].encode("utf-8") + "\n")
-        if currentTime == dataJSON['created_at']:
-            timeCounter += 1
-        elif currentTime <= dataJSON['created_at']:
-            storeData(currentTime, timeCounter)
-            timeCounter = 1
-            currentTime = dataJSON['created_at']
-        else:
-            print "redacted"
+        if ('created_at' in dataJSON):
+            if currentTime == dataJSON['created_at']:
+                timeCounter += 1
+            elif currentTime <= dataJSON['created_at']:
+                storeData(currentTime, timeCounter)
+                timeCounter = 1
+                currentTime = dataJSON['created_at']
+            else:
+                print "Redacted"
 
 class StdOutListener(StreamListener):
     """ A listener handles tweets that are received from the stream.

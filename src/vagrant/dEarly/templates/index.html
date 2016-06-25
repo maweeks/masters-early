@@ -3,6 +3,7 @@
     <head>
         <title>dEarly</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
         <style>
             html {
                 text-align: center;
@@ -18,13 +19,13 @@
                 max-height: 86%;
                 overflow: scroll;
             }
-            .half {
+            .graph {
                 background-color: #DDD;
                 display: inline-block;
-                /*float: left;*/
                 height: 500px;
                 margin: 0 1% 1% 1%;
-                width: 98%;
+                padding: 0 1% 0 1%;
+                width: 96%;
             }
         </style>
     </head>
@@ -32,18 +33,51 @@
         <div class="container">
             <h1>Welcome to dEarly</h1>
             <div>
-                <div class="half" id="60seconds">
-                    <h3>Last 60 Seconds:</h3>
+                <div class="graph" id="60seconds">
+                    <h3>Number of tweets created in the last 60 seconds that contain the word football:</h3>
                     <div class="content">
-                        <ul id="60sec">
+                        <canvas id="myChart" width="1166" height="420"></canvas>
                         <script type="text/javascript">
-                            chartData = "";
+                            var chartData = "";
+                            var myChart
+                            function createGraph() {
+                                var ctx = document.getElementById("myChart");
+                                myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: chartData[0],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: chartData[1],
+                                            backgroundColor: [
+                                                'rgba(54, 162, 235, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(54, 162, 235, 1)'
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero:true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                            }
+
                             function cropData() {
-                                latestTime = new Date(new Date(chartData[0]["timestamp"]) - 60000);
+                                latestTime = new Date(new Date(chartData[0][0]) - 60000);
                                 cuttingList = true;
                                 while (cuttingList) {
-                                    if ((latestTime) > (new Date(chartData[chartData.length -1]["timestamp"]))) {
-                                        chartData.pop();
+                                    // console.log(latestTime + " " + chartData[0][chartData.length -1]);
+                                    if ((latestTime) > (new Date(chartData[0][chartData[0].length -1]))) {
+                                        chartData[0].pop();
+                                        chartData[1].pop();
                                     }
                                     else {
                                         cuttingList = false;
@@ -55,9 +89,10 @@
                                 var titleList = $.getJSON("/datasec", function() {
                                     newData = titleList.responseJSON["timecounts"];
                                     // console.log(newData)
-                                    if (newData[0]["timestamp"] != chartData[0]["timestamp"]) {
+                                    if (newData[0]["timestamp"] != chartData[0][0]) {
                                         // console.log("new " + newData[0]["timestamp"] + " " + chartData[0]["timestamp"]);
-                                        chartData = newData.concat(chartData);
+                                        chartData[0] = [newData[0]["timestamp"]].concat(chartData[0]);
+                                        chartData[1] = [newData[0]["count"]].concat(chartData[1]);
                                         cropData();
                                         // console.log(chartData.length)
                                     }
@@ -69,22 +104,32 @@
                             }
 
                             function updateGraph() {
-                                //
+                                myChart.data.labels = chartData[0];
+                                myChart.data.datasets[0].data = chartData[1];
+                                myChart.update();
+                                console.log("update");
+                                console.log(myChart);
+                                console.log(chartData[1].length);
+                                console.log(chartData[1]);
                             }
 
                             var titleList = $.getJSON("/datasecall", function() {
-                                chartData = titleList.responseJSON["timecounts"];
-                                // console.log(chartData);
+                                chartDataJSON = titleList.responseJSON["timecounts"];
+                                chartData = [[],[]]
+                                for (var i = 0; i < chartDataJSON.length; i++) {
+                                    chartData[0].push(chartDataJSON[i]["timestamp"]);
+                                    chartData[1].push(chartDataJSON[i]["count"]);
+                                }
+                                console.log(chartData);
                                 cropData();
-                                // console.log(chartData);
-                                updateGraph();
+                                console.log(chartData);
+                                createGraph();
                                 setInterval(function() {
                                     updateData();
                                     updateGraph();
                                 }, 900);
                             })
                         </script>
-                        </ul>
                     </div>
                 </div>
             </div>
