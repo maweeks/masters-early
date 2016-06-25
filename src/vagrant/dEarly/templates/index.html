@@ -23,7 +23,7 @@
                 display: inline-block;
                 /*float: left;*/
                 height: 500px;
-                margin: 1%;
+                margin: 0 1% 1% 1%;
                 width: 98%;
             }
         </style>
@@ -37,8 +37,51 @@
                     <div class="content">
                         <ul id="60sec">
                         <script type="text/javascript">
-                            var titleList = $.getJSON("/datasec", function() {
-                                console.log(titleList.responseJSON);
+                            chartData = "";
+                            function cropData() {
+                                latestTime = new Date(new Date(chartData[0]["timestamp"]) - 60000);
+                                cuttingList = true;
+                                while (cuttingList) {
+                                    if ((latestTime) > (new Date(chartData[chartData.length -1]["timestamp"]))) {
+                                        chartData.pop();
+                                    }
+                                    else {
+                                        cuttingList = false;
+                                    }
+                                }
+                            }
+
+                            function updateData() {
+                                var titleList = $.getJSON("/datasec", function() {
+                                    newData = titleList.responseJSON["timecounts"];
+                                    // console.log(newData)
+                                    if (newData[0]["timestamp"] != chartData[0]["timestamp"]) {
+                                        // console.log("new " + newData[0]["timestamp"] + " " + chartData[0]["timestamp"]);
+                                        chartData = newData.concat(chartData);
+                                        cropData();
+                                        // console.log(chartData.length)
+                                    }
+                                    // else {
+                                    //     console.log("old")
+                                    //     console.log("old " + newData[0]["timestamp"] + " " + chartData[0]["timestamp"]);
+                                    // }
+                                })
+                            }
+
+                            function updateGraph() {
+                                //
+                            }
+
+                            var titleList = $.getJSON("/datasecall", function() {
+                                chartData = titleList.responseJSON["timecounts"];
+                                // console.log(chartData);
+                                cropData();
+                                // console.log(chartData);
+                                updateGraph();
+                                setInterval(function() {
+                                    updateData();
+                                    updateGraph();
+                                }, 900);
                             })
                         </script>
                         </ul>
