@@ -47,7 +47,7 @@
                                     data: {
                                         labels: chartData[0],
                                         datasets: [{
-                                            label: '# of Votes',
+                                            label: '# of tweets',
                                             data: chartData[1],
                                             backgroundColor: [
                                                 'rgba(54, 162, 235, 0.2)'
@@ -134,10 +134,8 @@
                                     chartData[0].push(chartDataJSON[i]["timestamp"]);
                                     chartData[1].push(chartDataJSON[i]["count"]);
                                 }
-                                console.log(chartData);
-                                console.log("asdf")
                                 cropData();
-                                console.log(chartData);
+                                // console.log(chartData);
                                 createGraph();
                                 setInterval(function() {
                                     updateData();
