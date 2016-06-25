@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 class TimeCount(Base):
-    __tablename__ = 'user'
+    __tablename__ = 'timecount'
 
     id = Column(Integer, primary_key = True)
     timestamp = Column(DateTime, nullable = False)

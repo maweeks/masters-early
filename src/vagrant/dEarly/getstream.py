@@ -16,7 +16,7 @@ timeCounter = 0
 
 def storeData(time, count):
     print time + " " + str(count)
-    engine = create_engine('sqlite:///gamecatalog.db')
+    engine = create_engine('sqlite:///dEarly.db')
     Base.metadata.bind = engine
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
