@@ -43,7 +43,7 @@ def getDataSecAll():
     Base.metadata.bind = engine
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
-    timecounts = session.query(TimeCount).order_by(desc(TimeCount.timestamp)).limit(60)
+    timecounts = session.query(TimeCount).order_by(desc(TimeCount.timestamp)).limit(61)
     return jsonify(timecounts=[r.serialize for r in timecounts])
 
 # Custom error page
