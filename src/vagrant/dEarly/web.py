@@ -10,6 +10,7 @@ from oauth2client.client import FlowExchangeError
 import httplib2
 import json
 from flask import make_response
+import random
 import requests
 
 app = Flask(__name__)
@@ -26,6 +27,14 @@ app = Flask(__name__)
 @app.route('/index/')
 def showIndex():
     return render_template('index.html')
+
+@app.route('/datasec')
+def getDataSec(): # TODO
+    return str(random.randrange(0, 10))
+
+@app.route('/datasecall')
+def getDataSecAll(): # TODO
+    return str(random.randrange(0, 10))
 
 # Custom error page
 @app.errorhandler(404)

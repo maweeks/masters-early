@@ -1,6 +1,62 @@
 <!DOCTYPE HTML>
-<title>dEarly</title>
-<h1>Welcome to dEarly</h1>
-<p>
-    Content coming soon...
-</p>
+<html>
+    <head>
+        <title>dEarly</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <style>
+            html {
+                text-align: center;
+            }
+            body {
+                margin: auto;
+                max-width: 1200px;
+            }
+            .container {
+                background-color: #AAA;
+            }
+            .content {
+                max-height: 86%;
+                overflow: scroll;
+            }
+            .half {
+                background-color: #DDD;
+                display: inline-block;
+                /*float: left;*/
+                height: 500px;
+                margin: 1%;
+                width: 98%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to dEarly</h1>
+            <div>
+                <div class="half" id="60seconds">
+                    <h3>Last 60 Seconds:</h3>
+                    <div class="content">
+                        <ul id="60sec">
+                        <script type="text/javascript">
+                            var titleList = $.getJSON("/datasec", function() {
+                                console.log(titleList.responseJSON);
+                            })
+                            // console.log(titleList)
+                            // console.log(titleList[0])
+                            // console.log(titleList.responseJSON)
+                            // console.log(titleList[0])
+                            // console.log(titleList)
+                        </script>
+                        </ul>
+                    </div>
+                </div>
+                <div class="half" id="60minutes">
+                    <h3>Last 60 Minutes:</h3>
+                    <div class="content">
+                        <ul id="60min">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
