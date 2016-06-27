@@ -32,10 +32,10 @@ Below is a list of all of the requirements for this project, which have been spl
 ### Output
 
 * All data used for the visualisation will be retrieved from the data store used within the application to ensure that the data collection from Twitter is not impacted by running of the application if many dashboards are running at once.
-* A visualisation container library would be created so that the output of the application would be easily and highly configurable using a JSON file. A possible structure is shown below.
 * Each graph should be able to be added to a cell and updated using a single function call.
 * It should be possible to remotely access the dashboard.
 * It should be possible to have multiple dashboards running at once.
+* A visualisation container library would be created so that the output of the application would be easily and highly configurable using a JSON file. A possible structure is shown below.
 
 ```
 {
@@ -65,6 +65,12 @@ Below is a list of all of the requirements for this project, which have been spl
 
 * Number of tweets per second (early deliverable).
 * Number of tweets per location, shown on a heatmap overlaid on a world map.
+* Compare number of tweets about multiple topics at once.
+* Attempt to predict the rise and fall of currently trending Twitter topics.
+* Create a venn diagram between the followers, retweets and favourites of a user or tweet.
+* Show increase or decrease of followers including current trend, i.e. rising or falling.
+* A graph / tree diagram showing the interaction of users on a tweet. The root node being the initial tweet, and sub nodes being retweets / favourites.
+* (Other visualisations could be added if interesting ideas are thought of throughout development of the dashboard.)
 
 
 ### Other
