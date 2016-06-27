@@ -42,7 +42,7 @@ old-src - contains the original version of the project, designed to work on Goog
 
 src - contains all of the source code for the application in its current state.
 
-## App URL
+## Application URL
 
 This application is currently not available to view publically currently, a video is running at the following URL:
 
