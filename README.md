@@ -22,6 +22,12 @@ This repository contains submission material for the CO880 Early Deliverable.
 |-- README.md
 ```
 
+docs - contains all the documentation beyond this README.
+
+old-src - contains the original version of the project, designed to work on Google App Engine, due to their setup the application cannot be run using only GAE, but some of the files could still be useful whilst developing the project.
+
+src - contains all of the source code for the application in its current state.
+
 ## App URL
 
 This application is currently not available to view publically currently, a video is running at the following URL:
