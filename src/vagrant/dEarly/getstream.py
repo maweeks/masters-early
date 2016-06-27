@@ -73,4 +73,4 @@ if __name__ == '__main__':
     auth.set_access_token(getAccessToken(), getAccessTokenSecret())
 
     stream = Stream(auth, l)
-    stream.filter(track=['football'])
+    stream.filter(track=['GameofThrones'])
