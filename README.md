@@ -4,6 +4,20 @@ This repository contains submission material for the CO880 Early Deliverable.
 
 &copy; Matt Weeks 2016 (matt@weeks.codes)
 
+## Setup
+
+Currently the application is designed to be run in a vagrant VM. To run the application:
+
+1. install vagrant
+2. load the virtual machine
+3. create a 'secrets.py' file using the template and adding the required credentials
+4. run 'database_setup.py' to create the database
+5. run 'getstream.py' to begin storing data from twitter
+6. run 'web.py' to start the webserver to output the data
+7. visit 'localhost:5000' to view the dashboard
+
+If you do not wish to install everything there is a video linked below showing the output of the application.
+
 ## Directory Structure
 ```
 /
