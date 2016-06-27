@@ -10,7 +10,14 @@ This repository contains submission material for the CO880 Early Deliverable.
 |-- docs
 |   |-- risks.md
 |   |-- specification.md
+|-- old-src
+|-- |-- mjw77-early
+|-- |-- |-- css
+|-- |-- |-- libs
 |-- src
+|-- |-- vagrant
+|-- |-- |-- dEarly
+|-- |-- |-- |-- templates
 |-- .gitignore
 |-- README.md
 ```
