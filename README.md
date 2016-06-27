@@ -28,6 +28,8 @@ This application is currently not available to view publically currently, a vide
 
 https://youtu.be/xFTwe-9_g_Y
 
+The video shows the number of tweets created in the last 60 seconds that contain the phrase "GameofThrones". This video was recorded the morning that the final episode of season 6 of Game of Thrones was originally aired, roughly 2 hours after it finished.
+
 ## Libraries Used
 
 * Twitter API ([GET statuses/sample] (https://dev.twitter.com/streaming/reference/get/statuses/sample))
