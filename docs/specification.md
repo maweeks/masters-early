@@ -7,6 +7,7 @@ Below is a list of all of the requirements for this project, which have been spl
 * Data collection
 * Data processing and storage
 * Output
+* Graphs
 * Other
 
 ### Overview (based on the project description)
@@ -24,12 +25,17 @@ Below is a list of all of the requirements for this project, which have been spl
 
 ### Data processing and storage
 
+* Data collection and processing will be handled separately to ensure that data collection is not impacted by data processing.
 * The vast amount of data gathered will be processed to reduce the size of data storage whilst still managing to contain all data required for all visualisations that can be produced.
 * The data will be stored in an efficient way, to ensure that excessive storage is not required to keep the application running.
 
 ### Output
 
+* All data used for the visualisation will be retrieved from the data store used within the application to ensure that the data collection from Twitter is not impacted by running of the application if many dashboards are running at once.
 * A visualisation container library would be created so that the output of the application would be easily and highly configurable using a JSON file. A possible structure is shown below.
+* Each graph should be able to be added to a cell and updated using a single function call.
+* It should be possible to remotely access the dashboard.
+* It should be possible to have multiple dashboards running at once.
 
 ```
 {
@@ -54,6 +60,12 @@ Below is a list of all of the requirements for this project, which have been spl
 	}]
 }
 ```
+
+### Graphs
+
+* Number of tweets per second (early deliverable).
+* Number of tweets per location, shown on a heatmap overlaid on a world map.
+
 
 ### Other
 
