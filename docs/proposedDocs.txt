@@ -1,0 +1,38 @@
+Docs:
+-----
+
+Preparation:
+* Overview
+* Specification
+* Risk analysis
+
+Design:
+* Development methodology
+* Planned site overview
+* Sketches
+* Estimated timeline (Gantt chart)
+* Test plan
+
+Development:
+* Development diary
+
+Testing:
+* Testing overview
+* Testing method
+* Manual testing plan
+* Automated testing
+* Testing summary
+
+Review:
+* Final site overview
+* Requirements check
+* Repository activity
+* Timeline estimated vs actual
+* Known bugs
+* Future developments
+* Evaluation
+
+
+Writeup:
+--------
+* Dissertation
